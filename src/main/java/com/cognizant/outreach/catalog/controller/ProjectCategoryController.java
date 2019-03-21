@@ -29,4 +29,11 @@ public class ProjectCategoryController {
 	public List<ProjectCategory> findCategoriesByProject(@PathVariable Long projectId){
 		return this.projectCategoryService.findCategoriesByProject(projectId);
 	}
+	
+	@GetMapping("/{projectId}/{categoryId}")
+	@CrossOrigin("*")
+	public String findCategoryName(@PathVariable Long projectId, @PathVariable Long categoryId){
+		ProjectCategory projectCategory = this.projectCategoryService.findCategoryName(projectId, categoryId);
+		return projectCategory.getName();
+	}
 }

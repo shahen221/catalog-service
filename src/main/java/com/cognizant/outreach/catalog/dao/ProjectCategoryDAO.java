@@ -11,4 +11,6 @@ public interface ProjectCategoryDAO extends JpaRepository<ProjectCategory, Proje
 	
 	public List<ProjectCategory> findByProjectCategoryIdentityProjectId(Long projectId);
 	
+	public ProjectCategory findByProjectCategoryIdentity(ProjectCategoryIdentity projectCategoryIdentity);
+	
 }
