@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cognizant.outreach.catalog.entity.ProjectCategory;
-import com.cognizant.outreach.catalog.entity.ProjectCategoryIdentity;
 
-public interface ProjectCategoryDAO extends JpaRepository<ProjectCategory, ProjectCategoryIdentity> {
+public interface ProjectCategoryDAO extends JpaRepository<ProjectCategory, Long> {
 	
-	public List<ProjectCategory> findByProjectCategoryIdentityProjectId(Long projectId);
+	public List<ProjectCategory> findByProjectId(Long projectId);
 	
-	public ProjectCategory findByProjectCategoryIdentity(ProjectCategoryIdentity projectCategoryIdentity);
+	public ProjectCategory findByProjectIdAndId(Long projectId, Long categoryId);
 	
 }

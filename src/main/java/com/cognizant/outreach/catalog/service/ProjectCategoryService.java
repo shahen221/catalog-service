@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cognizant.outreach.catalog.dao.ProjectCategoryDAO;
 import com.cognizant.outreach.catalog.entity.ProjectCategory;
-import com.cognizant.outreach.catalog.entity.ProjectCategoryIdentity;
 
 @Service
 public class ProjectCategoryService {
@@ -20,15 +19,12 @@ public class ProjectCategoryService {
 		this.projectCategoryDAO = projectCategoryDAO;
 	}
 	
-	public List<ProjectCategory> findCategoriesByProject(Long projectId){
-		return this.projectCategoryDAO.findByProjectCategoryIdentityProjectId(projectId);
+	public List<ProjectCategory> findCategoriesByProject(Long projectId){ 
+	  return this.projectCategoryDAO.findByProjectId(projectId); 
 	}
-	
-	public ProjectCategory findCategoryName(Long projectId, Long categoryId) {
-		ProjectCategoryIdentity projectCategoryIdentity = new ProjectCategoryIdentity();
-		projectCategoryIdentity.setId(categoryId);
-		projectCategoryIdentity.setProjectId(projectId);
-		return this.projectCategoryDAO.findByProjectCategoryIdentity(projectCategoryIdentity);
+	 
+	public ProjectCategory findCategoryByProjectId(Long projectId, Long categoryId) {
+		return this.projectCategoryDAO.findByProjectIdAndId(projectId, categoryId);
 	}
 	
 }

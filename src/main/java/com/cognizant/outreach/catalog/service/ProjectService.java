@@ -23,4 +23,7 @@ public class ProjectService {
 		return this.projectDAO.findAll();
 	}
 	
+	public Project findProjectById(Long projectId) {
+		return this.projectDAO.findProjectById(projectId);
+	}
 }

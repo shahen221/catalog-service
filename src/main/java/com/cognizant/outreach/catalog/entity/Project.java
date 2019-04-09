@@ -1,8 +1,13 @@
 package com.cognizant.outreach.catalog.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,9 @@ public class Project {
 	
 	@Column(name="project_name")
 	private String name;
+	
+	@OneToMany(mappedBy="project",cascade=CascadeType.ALL)
+	private Set<ProjectCategory> projectCategories= new HashSet<ProjectCategory>();
 
 	public Long getId() {
 		return id;
@@ -31,5 +39,13 @@ public class Project {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public Set<ProjectCategory> getProjectCategories() {
+		return projectCategories;
+	}
+
+	public void setProjectCategories(Set<ProjectCategory> projectCategories) {
+		this.projectCategories = projectCategories;
+	}
+
 }
